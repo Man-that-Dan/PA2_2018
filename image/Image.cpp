@@ -1,4 +1,5 @@
 #include "Image.h"
+#include <vector>
 
 using namespace std;
 // Param constructor

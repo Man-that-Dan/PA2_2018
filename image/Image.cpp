@@ -1,5 +1,6 @@
 #include "Image.h"
 
+using namespace std;
 // Param constructor
 Image::Image (ifstream& in) {
    this->HDR = Image::read_header(in);

@@ -13,13 +13,15 @@ using namespace std;
 class Image {
   private:
     Header HDR;
-    Pixel* PIX;
+    vector<Pixel> PIX;
+    // Delete: Pixel* PIX;
 
     // Disallow default constructor, why?
     Image ();
 
     // Used by Constructors to build Image
-    static Pixel* read_pixels(const Header&, std::ifstream&);
+    // Delete: static Pixel* read_pixels(const Header&, std::ifstream&);
+    static vector<Pixel> read_pixels(const Header&, std::ifstream&);
     static Header read_header(std::ifstream&);
     static void ignore_comments(std::ifstream&);
 
@@ -30,7 +32,7 @@ class Image {
     // Constructors
     Image (std::ifstream&);
     Image (const Image& i);
-    ~Image ();
+    // ~Image ();
 
     // Public member functions
     void write_to(std::ofstream&) const;
@@ -42,7 +44,8 @@ class Image {
     const Header& header() const;
     // Const accessor, dont let someone change the Pixel*
     // otherwise memory leaks!
-    const Pixel* pixels() const;
+    // Delete: const Pixel* pixels() const;
+    const vector<Pixel> pixels() const;
 
     // Assignment - More complicated than you think!
     Image& operator=(const Image& rhs);

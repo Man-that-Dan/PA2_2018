@@ -9,17 +9,24 @@ Image::Image (ifstream& in) {
 // Copy constructor
 Image::Image (const Image& img) {
   this->HDR = img.HDR;  // Assignment operator is really useful!
-  // We have to allocate new memory here
-  int num_pixels = img.HDR.width() * img.HDR.height();
-  this->PIX = new Pixel[num_pixels];
-  copy(img.PIX, img.PIX + num_pixels, this->PIX);
+  // Delete: We have to allocate new memory here
+  // DeletE: int num_pixels = img.HDR.width() * img.HDR.height();
+  // // Delete: this->PIX = new Pixel[num_pixels];
+  // Delete: this->PIX = vector<Pixel>
+  // Delete: this->PIX.resize(num_pixels);
+
+  // Delete: might need to change this to work with vectors
+  // Delete: copy(img.PIX, img.PIX + num_pixels, this->PIX);
+  vector<Pixel> Duplicate(img.PIX)
+  this->PIX = Duplicate;
 }
 
 // Destructor
+/* Delete:
 Image::~Image () {
   delete[] PIX;  // Don't allow memory leaks!
 }
-
+*/
 Header Image::read_header (ifstream& in) {
   string magic;
   int w, h, mc;
@@ -48,10 +55,13 @@ void Image::ignore_comments (ifstream& in) {
   in.unget();
 }
 
-// This function allocates memory!
-Pixel* Image::read_pixels (const Header& hdr, ifstream& in) {
+// Delete: This function allocates memory! Not anymore..well technically it still does
+vector<Pixel> Image::read_pixels (const Header& hdr, ifstream& in) {
   int num_pixels = hdr.width() * hdr.height();
-  Pixel* pixels = new Pixel[num_pixels];
+  // delete: Pixel* pixels = new Pixel[num_pixels];
+  pixels = vector<Pixel>
+  pixels.resize(num_pixels);
+
 
   if (hdr.magic() == "P3") {
     uint r,g,b;
@@ -74,7 +84,7 @@ Pixel* Image::read_pixels (const Header& hdr, ifstream& in) {
 
 // accessors
 const Header& Image::header () const { return this->HDR; }
-const Pixel* Image::pixels () const { return this->PIX; }
+const vector<Pixels> Image::pixels () const { return this->PIX; }
 
 // If someone wants to change the header, the Image controls
 // which fields it will to expose
@@ -95,14 +105,14 @@ void Image::write_to (ofstream& out) const {
 
   if (this->HDR.magic() == "P3") {
     for (int i = 0; i < num_pixels; i++) {
-      Pixel* p = this->PIX + i;
+      Pixel* p = this->PIX[i];
       out << (int) p->r() << ' '
           << (int) p->g() << ' '
           << (int) p->b() << ' ';
     }
   } else {
     for (int i = 0; i < num_pixels; i++) {
-      Pixel* p = this->PIX + i;
+      Pixel* p = this->PIX[i];
       out << p->r() << p->g() << p->b();
     }
   }
@@ -115,12 +125,15 @@ Image& Image::operator=(const Image& rhs) {
   this->HDR = rhs.HDR;  // Assignment operator
 
   // Pixels are not, we need to make sure there is enough room
-  int num_pixels = rhs.HDR.width() * rhs.HDR.height();
-  delete[] this->PIX;
-  this->PIX = new Pixel[num_pixels];
+  // delete: int num_pixels = rhs.HDR.width() * rhs.HDR.height();
+  // delete: delete[] this->PIX;
+  // delete: this->PIX = new Pixel[num_pixels];
 
   // And do a complete copy
-  copy(rhs.PIX, rhs.PIX+num_pixels, this->PIX);
+  // delete: copy(rhs.PIX, rhs.PIX+num_pixels, this->PIX);
+  vector<Pixel> Duplicate(rhs.PIX)
+  this->PIX = Duplicate;
+
   return *this;
 }
 

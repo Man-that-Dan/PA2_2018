@@ -24,30 +24,32 @@ int main(int argc, char const *argv[]) {
     std::cerr << "USAGE: ./out <in.ppm> <out.ppm>";
     return 1;
   };
-  string in = argv[2]
+
+  string in;
+  strcpy(in, argv[2]);
   string out1 = "k3_" + in;
   string out2 = "k5_" + in;
   // Open files
-  std::ifstream in(argv[1]);
+  std::ifstream input(argv[1]);
   std::ofstream output(out1);
   std::ofstream output2(out2);
 
 
-  if (!(in && out2 && out)) {
+  if (!(in && output2 && output)) {
     std::cerr << "Could not open input/output\n";
     return 1;
   }
 
   // ifstream constructor, let's read the file twice!
-  Image in1(in);
-  Image outK5 = Filter::sharpen(in1, K5);
-  Image outK3 = Filter::sharpen(in1, K3);
+  Image pic(input);
+  Image outK5 = Filter::sharpen(pic, K5);
+  Image outK3 = Filter::sharpen(pic, K3);
 
   outK5.write_to(output2);
   outK3.write_to(output);
 
 
-  in.close();
+  input.close();
   output2.close();
   output.close();
 

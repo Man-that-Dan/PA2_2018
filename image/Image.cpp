@@ -19,7 +19,7 @@ Image::Image (const Image& img) {
 
   // Delete: might need to change this to work with vectors
   // Delete: copy(img.PIX, img.PIX + num_pixels, this->PIX);
-  vector<Pixel> Duplicate(img.PIX)
+  vector<Pixel> Duplicate(img.PIX);
   this->PIX = Duplicate;
 }
 
@@ -61,7 +61,7 @@ void Image::ignore_comments (ifstream& in) {
 vector<Pixel> Image::read_pixels (const Header& hdr, ifstream& in) {
   int num_pixels = hdr.width() * hdr.height();
   // delete: Pixel* pixels = new Pixel[num_pixels];
-  pixels = vector<Pixel>
+  vector<Pixel> pixels;
   pixels.resize(num_pixels);
 
 
@@ -107,15 +107,15 @@ void Image::write_to (ofstream& out) const {
 
   if (this->HDR.magic() == "P3") {
     for (int i = 0; i < num_pixels; i++) {
-      Pixel* p = this->PIX[i];
-      out << (int) p->r() << ' '
-          << (int) p->g() << ' '
-          << (int) p->b() << ' ';
+      Pixel p = this->PIX[i];
+      out << (int) p.r() << ' '
+          << (int) p.g() << ' '
+          << (int) p.b() << ' ';
     }
   } else {
     for (int i = 0; i < num_pixels; i++) {
       Pixel* p = this->PIX[i];
-      out << p->r() << p->g() << p->b();
+      out << p.r() << p.g() << p.b();
     }
   }
 }

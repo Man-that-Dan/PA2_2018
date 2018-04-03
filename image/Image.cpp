@@ -3,18 +3,21 @@
 
 using namespace std;
 // Param constructor
-Image::Image (ifstream& in) {
-   this->HDR = Image::read_header(in);
-   this->PIX = Image::read_pixels(this->HDR, in);
-}
+// Delete: Image::Image (ifstream& in) {
+//    this->HDR = Image::read_header(in);
+//    this->PIX = Image::read_pixels(this->HDR, in);
+// }
+Image::Image(ifstream& in) : HDR(Image::read_header(in)), PIX(Image::read_pixels(this->HDR, in)) { }
+// Delete:Date()  :  month(10), day(7), year(1963)  {  }Date(int m, int d, int y)   :   month(m), day(d), year(y) {  }
 
 // Copy constructor
-Image::Image (const Image& img) {
-  this->HDR = img.HDR;  // Assignment operator is really useful!
-
-  vector<Pixel> Duplicate(img.PIX);
-  this->PIX = Duplicate;
-}
+// Delete: Image::Image (const Image& img) {
+//   this->HDR = img.HDR;  // Assignment operator is really useful!
+//
+//   vector<Pixel> Duplicate(img.PIX);
+//   this->PIX = Duplicate;
+// }
+Image::Image(const Image& img) : HDR(img.HDR),  PIX(img.PIX) { }
 
 
 Header Image::read_header (ifstream& in) {

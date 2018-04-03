@@ -1,8 +1,8 @@
 #ifndef FILTER_H
 #define FILTER_H
-#include "../image.Header.h"
-#include "../image.Image.h"
-#include "../image.Pixel.h"
+#include "../image/Header.h"
+#include "../image/Image.h"
+#include "../image/Pixel.h"
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>

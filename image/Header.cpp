@@ -1,5 +1,5 @@
 #include "Header.h"
-
+using namespace std;
 // Default constructor
 Header::Header () {
   this->MAGIC = "";

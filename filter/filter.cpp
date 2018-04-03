@@ -69,18 +69,19 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     Pixel retValue(R, G, B);
     return retValue;
   };
+    return 1;
 }
 
 Image& Filter::sharpen(Image& img, Matrix& k){
   int x, y;
-  int width = img->HDR.width();
-  int height = img->HDR.height();
+  int width = img.HDR.width();
+  int height = img.HDR.height();
 
   //3x3 operation
   if((k[0].size()) == 3){
     //loop through all pixels except edge pixels
-    for(int x = 1; x < (width - 1); x++){
-      for(int y = 1; y < (height - 1); y++){
+    for(x = 1; x < (width - 1); x++){
+      for(y = 1; y < (height - 1); y++){
         img(x,y) = Filter::apply_kernel(img, x, y, k);
       };
     };
@@ -89,8 +90,8 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   //5x5 operation
   if((k[0].size()) == 5){
     //loop through all pixels except edge pixels
-    for(int x = 2; x < (width - 2); x++){
-      for(int y = 2; y < (height - 2); y++){
+    for(x = 2; x < (width - 2); x++){
+      for(y = 2; y < (height - 2); y++){
         img(x,y) = Filter::apply_kernel(img, x, y, k);
       };
     };

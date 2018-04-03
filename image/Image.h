@@ -15,13 +15,13 @@ class Image {
   private:
     Header HDR;
     vector<Pixel> PIX;
-    // Delete: Pixel* PIX;
+
 
     // Disallow default constructor, why?
     Image ();
 
     // Used by Constructors to build Image
-    // Delete: static Pixel* read_pixels(const Header&, std::ifstream&);
+
     static vector<Pixel> read_pixels(const Header&, std::ifstream&);
     static Header read_header(std::ifstream&);
     static void ignore_comments(std::ifstream&);
@@ -33,7 +33,7 @@ class Image {
     // Constructors
     Image (std::ifstream&);
     Image (const Image& i);
-    // ~Image ();
+
 
     // Public member functions
     void write_to(std::ofstream&) const;
@@ -43,16 +43,15 @@ class Image {
     // Don't let someone change the header arbitrarily,
     // Image should control what fields are allowed to change
     const Header& header() const;
-    // Const accessor, dont let someone change the Pixel*
-    // otherwise memory leaks!
-    // Delete: const Pixel* pixels() const;
+    // Const accessor
+
     const vector<Pixel> pixels() const;
 
     // Assignment - More complicated than you think!
     Image& operator=(const Image& rhs);
 
     // Cool Pixel grabber
-    // What does returning by non-const ref let us do?
+  
     Pixel& operator()(int, int);
 };
 

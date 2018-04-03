@@ -11,24 +11,12 @@ Image::Image (ifstream& in) {
 // Copy constructor
 Image::Image (const Image& img) {
   this->HDR = img.HDR;  // Assignment operator is really useful!
-  // Delete: We have to allocate new memory here
-  // DeletE: int num_pixels = img.HDR.width() * img.HDR.height();
-  // // Delete: this->PIX = new Pixel[num_pixels];
-  // Delete: this->PIX = vector<Pixel>
-  // Delete: this->PIX.resize(num_pixels);
 
-  // Delete: might need to change this to work with vectors
-  // Delete: copy(img.PIX, img.PIX + num_pixels, this->PIX);
   vector<Pixel> Duplicate(img.PIX);
   this->PIX = Duplicate;
 }
 
-// Destructor
-/* Delete:
-Image::~Image () {
-  delete[] PIX;  // Don't allow memory leaks!
-}
-*/
+
 Header Image::read_header (ifstream& in) {
   string magic;
   int w, h, mc;
@@ -57,10 +45,10 @@ void Image::ignore_comments (ifstream& in) {
   in.unget();
 }
 
-// Delete: This function allocates memory! Not anymore..well technically it still does
+
 vector<Pixel> Image::read_pixels (const Header& hdr, ifstream& in) {
   int num_pixels = hdr.width() * hdr.height();
-  // delete: Pixel* pixels = new Pixel[num_pixels];
+
   vector<Pixel> pixels;
   pixels.resize(num_pixels);
 
@@ -122,17 +110,11 @@ void Image::write_to (ofstream& out) const {
 
 // This function is important!
 Image& Image::operator=(const Image& rhs) {
-  if (this == &rhs) return *this; // Why do we need this? Hint: delete[]
+  if (this == &rhs) return *this;
   // Header is simple
   this->HDR = rhs.HDR;  // Assignment operator
 
-  // Pixels are not, we need to make sure there is enough room
-  // delete: int num_pixels = rhs.HDR.width() * rhs.HDR.height();
-  // delete: delete[] this->PIX;
-  // delete: this->PIX = new Pixel[num_pixels];
 
-  // And do a complete copy
-  // delete: copy(rhs.PIX, rhs.PIX+num_pixels, this->PIX);
   vector<Pixel> Duplicate(rhs.PIX);
   this->PIX = Duplicate;
 

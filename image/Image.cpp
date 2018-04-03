@@ -86,7 +86,7 @@ vector<Pixel> Image::read_pixels (const Header& hdr, ifstream& in) {
 
 // accessors
 const Header& Image::header () const { return this->HDR; }
-const vector<Pixels> Image::pixels () const { return this->PIX; }
+const vector<Pixel> Image::pixels () const { return this->PIX; }
 
 // If someone wants to change the header, the Image controls
 // which fields it will to expose
@@ -114,7 +114,7 @@ void Image::write_to (ofstream& out) const {
     }
   } else {
     for (int i = 0; i < num_pixels; i++) {
-      Pixel* p = this->PIX[i];
+      Pixel p = this->PIX[i];
       out << p.r() << p.g() << p.b();
     }
   }
@@ -133,7 +133,7 @@ Image& Image::operator=(const Image& rhs) {
 
   // And do a complete copy
   // delete: copy(rhs.PIX, rhs.PIX+num_pixels, this->PIX);
-  vector<Pixel> Duplicate(rhs.PIX)
+  vector<Pixel> Duplicate(rhs.PIX);
   this->PIX = Duplicate;
 
   return *this;

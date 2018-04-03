@@ -1,30 +1,17 @@
 #include "Header.h"
 using namespace std;
+
 // Default constructor
-// Delete:  Header::Header () {
-//   this->MAGIC = "";
-//   this->W = 0;
-//   this->H = 0;
-//   this->MC = 0;
-// }
+
 Header::Header() : MAGIC(""), W(0), H(0), MC(0) { }
-// Delete:Date()  :  month(10), day(7), year(1963)  {  }Date(int m, int d, int y)   :   month(m), day(d), year(y) {  }
+
 
 // Copy constructor
-// Delete: Header::Header (const Header& HDR) {
-//   this->MAGIC = HDR.MAGIC; // Why can I access private data here?
-//   this->W = HDR.W;
-//   this->H = HDR.H;
-//   this->MC = HDR.MC;
-// }
+
 Header::Header(const Header& HDR) : MAGIC(HDR.MAGIC), W(HDR.W), H(HDR.H), MC(HDR.MC) { }
+
 // Param constructor
-// Delete: Header::Header (std::string m, int w, int h, int mc) {
-//   this->MAGIC = m;
-//   this->W = w;
-//   this->H = h;
-//   this->MC = mc;
-// }
+
 Header::Header(std::string m, int w, int h, int mc) : MAGIC(m), W(w), H(h), MC(mc) { }
 
 // Destructor

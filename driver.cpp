@@ -5,6 +5,8 @@
 #include "image/Image.h"
 #include "filter/filter.h"
 
+using namespace std;
+
 Matrix Filter::K3 =
 {{ 0,-1, 0},
  {-1, 5,-1},
@@ -21,14 +23,14 @@ int main(int argc, char const *argv[]) {
   if (argc != 3) {
     std::cerr << "USAGE: ./out <in.ppm> <out.ppm>";
     return 1;
-  }
+  };
   string in = argv[2]
   string out1 = "k3_" + in;
   string out2 = "k5_" + in;
   // Open files
   std::ifstream in(argv[1]);
-  std::ofstream out(out1);
-  std::ofstream out2(out2);
+  std::ofstream output(out1);
+  std::ofstream output2(out2);
 
 
   if (!(in && out2 && out)) {
@@ -41,13 +43,13 @@ int main(int argc, char const *argv[]) {
   Image outK5 = Filter::sharpen(in1, K5);
   Image outK3 = Filter::sharpen(in1, K3);
 
-  outK5.write_to(out2);
-  outK3.write_to(out);
-  
+  outK5.write_to(output2);
+  outK3.write_to(output);
+
 
   in.close();
-  out2.close();
-  out.close();
+  output2.close();
+  output.close();
 
   return 0;
 }

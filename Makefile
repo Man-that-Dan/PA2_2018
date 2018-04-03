@@ -3,7 +3,7 @@
 # ******************************************************** #
 
 # Output Config
-TARGET :=PPM
+TARGET :=DRIVER
 OBJDIR :=bin/
 
 # Compiler bin
@@ -35,4 +35,4 @@ clean:
 	rm -rf $(OBJDIR)
 
 run:
-	./$(TARGET) puppy.ppm doggo.ppm same_pupper.ppm
+	./$(TARGET) puppy.ppm sharpened_pupper.ppm

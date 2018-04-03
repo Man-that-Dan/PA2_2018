@@ -35,15 +35,15 @@ int main(int argc, char const *argv[]) {
   std::ofstream output2(out2);
 
 
-  if (!(in && output2 && output)) {
+  if (!(input && output2 && output)) {
     std::cerr << "Could not open input/output\n";
     return 1;
   }
 
   // ifstream constructor, let's read the file twice!
   Image pic(input);
-  Image outK5 = Filter::sharpen(pic, K5);
-  Image outK3 = Filter::sharpen(pic, K3);
+  Image outK5 = Filter::sharpen(pic, Filter::K5);
+  Image outK3 = Filter::sharpen(pic, Filter::K3);
 
   outK5.write_to(output2);
   outK3.write_to(output);

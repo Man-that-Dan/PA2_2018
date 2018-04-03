@@ -69,13 +69,13 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     Pixel retValue(R, G, B);
     return retValue;
   };
-    return 1;
+    return Pixel(0, 0, 0);
 }
 
 Image& Filter::sharpen(Image& img, Matrix& k){
   int x, y;
-  int width = img.HDR.width();
-  int height = img.HDR.height();
+  int width = img.header().width();
+  int height = img.header().height();
 
   //3x3 operation
   if((k[0].size()) == 3){
@@ -96,5 +96,5 @@ Image& Filter::sharpen(Image& img, Matrix& k){
       };
     };
   };
-
+  return img;
 }

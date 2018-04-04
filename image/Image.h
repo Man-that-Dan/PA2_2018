@@ -33,7 +33,7 @@ class Image {
     // Constructors
     Image (std::ifstream&);
     Image (const Image& i);
-
+    Image(const Image& i, vector<Pixel> pix);
 
     // Public member functions
     void write_to(std::ofstream&) const;
@@ -51,7 +51,7 @@ class Image {
     Image& operator=(const Image& rhs);
 
     // Cool Pixel grabber
-  
+
     Pixel& operator()(int, int);
 };
 

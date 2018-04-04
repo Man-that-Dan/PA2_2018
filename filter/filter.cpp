@@ -21,7 +21,7 @@ int Filter::clamp(int lo, int hi, int x){
 Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
   //3x3 operation
-  if(k == K3){
+  if(k == "K3"){
     int neighborX, neighborY, sumR, sumG, sumB, filtX, filtY;
     sumR = 0;
     sumG = 0;

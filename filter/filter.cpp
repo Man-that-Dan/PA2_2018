@@ -63,6 +63,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     for(filtY = 0, neighborY = -2; filtY < 5; filtY++, neighborY++){
       //column
       for(filtX = 0, neighborX = -2; filtX < 5; filtX++, neighborX++){
+
         sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtY][filtX]);
         sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtY][filtX]);
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
@@ -117,6 +118,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     //loop through all pixels except edge pixels
     for(y = 2; y < (height - 3); y++){
       for(x = 2; x < (width - 3); x++){
+          cout << img.header().width()  << " X: " << x << " " << img.header().height() << " Y: " << y << endl;
         ndx = (width * y) + x;
         newPix[ndx] = Filter::apply_kernel(img, x, y, K5);
 

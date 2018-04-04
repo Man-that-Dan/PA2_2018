@@ -6,7 +6,7 @@ using namespace std;
 // Param constructor
 
 Image::Image(ifstream& in) : HDR(Image::read_header(in)), PIX(Image::read_pixels(this->HDR, in)) { }
-Image::Image(const Image& i, vector<Pixel> pix) : HDR(img.HDR), PIX(pix) { }
+Image::Image(const Image& i, vector<Pixel> pix) : HDR(i.HDR), PIX(pix) { }
 
 // Copy constructor
 

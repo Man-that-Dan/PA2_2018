@@ -105,7 +105,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     for(y = 1; x < (width - 1); y++){
       for(x = 1; y < (height - 1); x++){
         ndx = (width * y) + x;
-        newPix[ndx] = Filter::apply_kernel(img, x, y, k);
+        newPix[ndx] = Filter::apply_kernel(img, x, y, K3);
 
       };
     };
@@ -118,7 +118,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     for(y = 2; x < (width - 2); y++){
       for(x = 2; y < (height - 2); x++){
         ndx = (width * y) + x;
-        newPix[ndx] = Filter::apply_kernel(img, x, y, k);
+        newPix[ndx] = Filter::apply_kernel(img, x, y, K5);
 
       };
     };

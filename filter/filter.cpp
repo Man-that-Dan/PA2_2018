@@ -41,9 +41,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
 
-    R = Filter::clamp(R);
-    G = Filter::clamp(G);
-    B = Filter::clamp(B);
+    R = Filter::clamp(0, 255, R);
+    G = Filter::clamp(0, 255, G);
+    B = Filter::clamp(0, 255, B);
     //create new pixel
     Pixel retValue(R, G, B);
 
@@ -71,9 +71,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
 
-    R = Filter::clamp(R);
-    G = Filter::clamp(G);
-    B = Filter::clamp(B);
+    R = Filter::clamp(0, 255, R);
+    G = Filter::clamp(0, 255, G);
+    B = Filter::clamp(0, 255, B);
     //create new pixel
     Pixel retValue(R, G, B);
     return retValue;

@@ -75,7 +75,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     G = Filter::clamp(0, 255, G);
     B = Filter::clamp(0, 255, B);
     //create new pixel
-    Pixel retValue(R, G, B);
+    Pixel retValue(50, 50, 50);
     return retValue;
   };
     return Pixel(0, 0, 0);

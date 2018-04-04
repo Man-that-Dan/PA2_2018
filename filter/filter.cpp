@@ -116,7 +116,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   if(k == K5){
     cout << "running K5" << endl;
     //loop through all pixels except edge pixels
-    for(y = 2; y < (height - 3); y++){
+    for(y = 2; y < (height - 4); y++){
       for(x = 2; x < (width - 3); x++){
           cout << img.header().width()  << " X: " << x << " " << img.header().height() << " Y: " << y << endl;
         ndx = (width * y) + x;

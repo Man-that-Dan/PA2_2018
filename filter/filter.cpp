@@ -45,9 +45,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     sumR = Filter::clamp(0, 255, sumR);
     sumG = Filter::clamp(0, 255, sumG);
     sumB = Filter::clamp(0, 255, sumB);
-    uint8_t R = static_cast<uint8_t>(sumR);
-    uint8_t G = static_cast<uint8_t>(sumG);
-    uint8_t B = static_cast<uint8_t>(sumB);
+    // uint8_t R = static_cast<uint8_t>(sumR);
+    // uint8_t G = static_cast<uint8_t>(sumG);
+    // uint8_t B = static_cast<uint8_t>(sumB);
     cout << R << " " << G << " " << B << endl;
 
 

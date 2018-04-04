@@ -21,7 +21,7 @@ int Filter::clamp(int lo, int hi, int x){
 Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
   //3x3 operation
-  if((k[0].size()) == 3){
+  if(k == K3){
     int neighborX, neighborY, sumR, sumG, sumB, filtX, filtY;
     sumR = 0;
     sumG = 0;
@@ -51,7 +51,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
   };
 
   //5x5 operation
-  if((k[0].size()) == 5){
+  if(k == K5){
     int neighborX, neighborY, sumR, sumG, sumB, filtX, filtY;
     sumR = 0;
     sumG = 0;
@@ -97,7 +97,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   };
 
   //3x3 operation
-  if((k[0].size()) == 3){
+  if(k == K3){
     //loop through all pixels except edge pixels
     for(y = 1; x < (width - 1); y++){
       for(x = 1; y < (height - 1); x++){
@@ -109,7 +109,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   };
 
   //5x5 operation
-  if((k[0].size()) == 5){
+  if(k == K5){
     //loop through all pixels except edge pixels
     for(y = 2; x < (width - 2); y++){
       for(x = 2; y < (height - 2); x++){

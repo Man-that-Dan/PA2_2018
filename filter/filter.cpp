@@ -29,12 +29,12 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     cout << "running K3" << endl;
     //looping through matrix and neighboring pixels
     //row
-    for(filtX = 0, neighborX = -1; filtX < 3; filtX++, neighborX++){
+    for(filtY = 0, neighborY = -1; filtY < 3; filtY++, neighborY++){
       //column
-      for(filtY = 0, neighborY = -1; filtY < 3; filtY++, neighborY++){
-        sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtX][filtY]);
-        sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtX][filtY]);
-        sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtX][filtY]);
+      for(filtX = 0, neighborX = -1; filtX < 3; filtX++, neighborX++){
+        sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtY][filtX]);
+        sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtY][filtX]);
+        sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
 
@@ -60,12 +60,12 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     sumB = 0;
     //looping through matrix and neighboring pixels
     //row
-    for(filtX = 0, neighborX = -2; filtX < 5; filtX++, neighborX++){
+    for(filtY = 0, neighborY = -2; filtY < 5; filtY++, neighborY++){
       //column
-      for(filtY = 0, neighborY = -2; filtY < 5; filtY++, neighborY++){
-        sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtX][filtY]);
-        sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtX][filtY]);
-        sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtX][filtY]);
+      for(filtX = 0, neighborX = -2; filtX < 5; filtX++, neighborX++){
+        sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtY][filtX]);
+        sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtY][filtX]);
+        sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
 

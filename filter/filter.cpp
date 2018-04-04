@@ -110,7 +110,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
       };
     };
   };
-
+  cout << (-1 + 2) << " " << (-1 + 1) << endl
   //5x5 operation
   if(k == K5){
     cout << "running K5" << endl;

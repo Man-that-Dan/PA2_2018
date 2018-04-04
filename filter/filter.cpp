@@ -32,9 +32,12 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     for(filtY = 0, neighborY = -1; filtY < 3; filtY++, neighborY++){
       //column
       for(filtX = 0, neighborX = -1; filtX < 3; filtX++, neighborX++){
-        sumR+=(img((neighborX + x), (neighborY + y)).r() * k[filtY][filtX]);
-        sumG+=(img((neighborX + x), (neighborY + y)).g() * k[filtY][filtX]);
-        sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
+        int currR = static_cast<int>(img((neighborX + x), (neighborY + y)).r())
+        int currG = static_cast<int>(img((neighborX + x), (neighborY + y)).g())
+        int currB = static_cast<int>(img((neighborX + x), (neighborY + y)).b())
+        sumR+=(currR * k[filtY][filtX]);
+        sumG+=(currG * k[filtY][filtX]);
+        sumB+=(currB * k[filtY][filtX]);
       };
     };
     sumR = Filter::clamp(0, 255, sumR);

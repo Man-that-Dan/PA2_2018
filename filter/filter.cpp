@@ -100,7 +100,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     //loop through all pixels except edge pixels
     for(y = 2; x < (width - 2); y++){
       for(x = 2; y < (height - 2); x++){
-        ndx = (width * y) + x;
+        // ndx = (width * y) + x;
         img(x,y) = Filter::apply_kernel(img, x, y, k);
       };
     };

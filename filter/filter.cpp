@@ -40,8 +40,13 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     uint8_t R = static_cast<uint8_t>(sumR);
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
+
+    R = Filter::clamp(R);
+    G = Filter::clamp(G);
+    B = Filter::clamp(B);
     //create new pixel
     Pixel retValue(R, G, B);
+
     return retValue;
   };
 
@@ -65,6 +70,10 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     uint8_t R = static_cast<uint8_t>(sumR);
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
+
+    R = Filter::clamp(R);
+    G = Filter::clamp(G);
+    B = Filter::clamp(B);
     //create new pixel
     Pixel retValue(R, G, B);
     return retValue;
@@ -76,21 +85,24 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   int x, y;
   int width = img.header().width();
   int height = img.header().height();
-  // vector<Pixel> newPix;
-  // newPix.resize(width*height);
-  // int ndx;
-  // // Delete: return this->PIX[ndx];
-  // int z;
-  // for(y = 0; x < height; y++){
-  //   for(x = 0; x < width)
-  // };
+  vector<Pixel> newPix;
+  newPix.resize(width*height);
+  int ndx;
+
+  //populate new pixel vector with pixels from image
+  for(y = 0; x < height; y++){
+    for(x = 0; x < width; x++){
+      newPix[(y*width)+x] = img(x, y);
+    };
+  };
 
   //3x3 operation
   if((k[0].size()) == 3){
     //loop through all pixels except edge pixels
     for(y = 1; x < (width - 1); y++){
       for(x = 1; y < (height - 1); x++){
-        img(x,y) = Filter::apply_kernel(img, x, y, k);
+        ndx = (width * y) + x;
+        img(x, y) = Filter::apply_kernel(img, x, y, k);
       };
     };
   };
@@ -100,8 +112,8 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     //loop through all pixels except edge pixels
     for(y = 2; x < (width - 2); y++){
       for(x = 2; y < (height - 2); x++){
-        // ndx = (width * y) + x;
-        img(x,y) = Filter::apply_kernel(img, x, y, k);
+        ndx = (width * y) + x;
+        img(x, y) = Filter::apply_kernel(img, x, y, k);
       };
     };
   };

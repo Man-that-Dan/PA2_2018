@@ -125,5 +125,5 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   };
 
   Image retImg(img, newPix);
-  return img;
+  return retImg;
 }

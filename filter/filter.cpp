@@ -103,6 +103,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
       for(x = 1; y < (height - 1); x++){
         ndx = (width * y) + x;
         img(x, y) = Filter::apply_kernel(img, x, y, k);
+        img(x, y) = Pixel(50, 50, 50);
       };
     };
   };

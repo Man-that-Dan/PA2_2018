@@ -35,6 +35,8 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         int currR = static_cast<int>(img((neighborX + x), (neighborY + y)).r());
         int currG = static_cast<int>(img((neighborX + x), (neighborY + y)).g());
         int currB = static_cast<int>(img((neighborX + x), (neighborY + y)).b());
+        cout << img((neighborX + x), (neighborY + y)).r() << endl;
+        cout<< currR << " " << currG << " " << currB << endl;
         sumR+=(currR * k[filtY][filtX]);
         sumG+=(currG * k[filtY][filtX]);
         sumB+=(currB * k[filtY][filtX]);

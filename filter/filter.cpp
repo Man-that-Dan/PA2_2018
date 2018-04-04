@@ -92,7 +92,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   int ndx;
 
   //populate new pixel vector with pixels from image
-  for(y = 0; x < height; y++){
+  for(y = 0; y < height; y++){
     for(x = 0; x < width; x++){
       newPix[(y*width)+x] = img(x, y);
     };
@@ -102,8 +102,8 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   if(k == K3){
     cout << "running K3" << endl;
     //loop through all pixels except edge pixels
-    for(y = 1; x < (width - 1); y++){
-      for(x = 1; y < (height - 1); x++){
+    for(y = 1; y < (height - 1); y++){
+      for(x = 1; x < (width - 1); x++){
         ndx = (width * y) + x;
         newPix[ndx] = Filter::apply_kernel(img, x, y, K3);
 
@@ -115,8 +115,8 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   if(k == K5){
     cout << "running K5" << endl;
     //loop through all pixels except edge pixels
-    for(y = 2; x < (width - 2); y++){
-      for(x = 2; y < (height - 2); x++){
+    for(y = 2; y < (height - 2); y++){
+      for(x = 2; x < (width - 2); x++){
         ndx = (width * y) + x;
         newPix[ndx] = Filter::apply_kernel(img, x, y, K5);
 

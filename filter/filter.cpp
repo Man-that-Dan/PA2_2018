@@ -37,9 +37,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
-    R = Filter::clamp(0, 255, R);
-    G = Filter::clamp(0, 255, G);
-    B = Filter::clamp(0, 255, B);
+    int R = Filter::clamp(0, 255, R);
+    int G = Filter::clamp(0, 255, G);
+    int B = Filter::clamp(0, 255, B);
     uint8_t R = static_cast<uint8_t>(sumR);
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);

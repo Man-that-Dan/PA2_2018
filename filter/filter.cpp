@@ -37,14 +37,14 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
-
+    R = Filter::clamp(0, 255, R);
+    G = Filter::clamp(0, 255, G);
+    B = Filter::clamp(0, 255, B);
     uint8_t R = static_cast<uint8_t>(sumR);
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
 
-    R = Filter::clamp(0, 255, R);
-    G = Filter::clamp(0, 255, G);
-    B = Filter::clamp(0, 255, B);
+
     //create new pixel
     Pixel retValue(R, G, B);
 
@@ -69,14 +69,14 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
-
+    R = Filter::clamp(0, 255, R);
+    G = Filter::clamp(0, 255, G);
+    B = Filter::clamp(0, 255, B);
     uint8_t R = static_cast<uint8_t>(sumR);
     uint8_t G = static_cast<uint8_t>(sumG);
     uint8_t B = static_cast<uint8_t>(sumB);
 
-    R = Filter::clamp(0, 255, R);
-    G = Filter::clamp(0, 255, G);
-    B = Filter::clamp(0, 255, B);
+
     //create new pixel
     Pixel retValue(50, 50, 50);
     return retValue;
@@ -116,8 +116,8 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   if(k == K5){
     cout << "running K5" << endl;
     //loop through all pixels except edge pixels
-    for(y = 2; y < (height - 4); y++){
-      for(x = 2; x < (width - 3); x++){
+    for(y = 2; y < (height - 2); y++){
+      for(x = 2; x < (width - 2); x++){
           cout << img.header().width()  << " X: " << x << " " << img.header().height() << " Y: " << y << endl;
         ndx = (width * y) + x;
         newPix[ndx] = Filter::apply_kernel(img, x, y, K5);

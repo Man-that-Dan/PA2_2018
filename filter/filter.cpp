@@ -76,12 +76,20 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   int x, y;
   int width = img.header().width();
   int height = img.header().height();
+  // vector<Pixel> newPix;
+  // newPix.resize(width*height);
+  // int ndx;
+  // // Delete: return this->PIX[ndx];
+  // int z;
+  // for(y = 0; x < height; y++){
+  //   for(x = 0; x < width)
+  // };
 
   //3x3 operation
   if((k[0].size()) == 3){
     //loop through all pixels except edge pixels
-    for(x = 1; x < (width - 1); x++){
-      for(y = 1; y < (height - 1); y++){
+    for(y = 1; x < (width - 1); y++){
+      for(x = 1; y < (height - 1); x++){
         img(x,y) = Filter::apply_kernel(img, x, y, k);
       };
     };
@@ -90,8 +98,9 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   //5x5 operation
   if((k[0].size()) == 5){
     //loop through all pixels except edge pixels
-    for(x = 2; x < (width - 2); x++){
-      for(y = 2; y < (height - 2); y++){
+    for(y = 2; x < (width - 2); y++){
+      for(x = 2; y < (height - 2); x++){
+        ndx = (width * y) + x;
         img(x,y) = Filter::apply_kernel(img, x, y, k);
       };
     };

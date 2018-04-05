@@ -4,6 +4,7 @@
 #include "image/Header.h"
 #include "image/Image.h"
 #include "filter/filter.h"
+#include "functions/functions.h"
 
 using namespace std;
 //test
@@ -39,7 +40,44 @@ int main(int argc, char const *argv[]) {
   outK5.write_to(output2);
   outK3.write_to(output);
 
+  //extra credit portion
+  vector<ifstream> MedInput;
+  vector<ifstream> AvgInput;
 
+  vector<Image> MedImgs;
+  vector<Image> AvgImgs;
+
+  openInputFiles("median", MedInput);
+  openInputFiles("average", AvgInput);
+
+  int i;
+  for(i = 0; i < 9; i++){
+    MedImgs[i] = Image temp(MedInput[i]);
+  };
+
+  for(i = 0; i < 10; i++){
+    AvgImgs[i] = Image temp(AvgInput[i]);
+  };
+
+  Image MedImg = removeNoiseMedian(MedImgs);
+  Image AvgImg = removeNoiseMedian(AvgImgs);
+
+  ofstream Medout("Noise_rem_med.ppm")
+  ofstream Avgout("Noise_rem_avg.ppm")
+
+  MedImg.write_to(Medout);
+  AvgImg.write_to(Avgout);
+
+  //close files
+
+  for(i = 0; i < 10; i++){
+    AvgInput[i].close();
+  };
+  for(i = 0; i < 9; i++){
+    MedInput[i].close();
+  };
+  Medout.close()
+  Avgout.close();
   input.close();
   output2.close();
   output.close();

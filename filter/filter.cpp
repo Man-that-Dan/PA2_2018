@@ -131,7 +131,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   };
 
   Image retImg(img, newPix);
-
+  //assign new image object to object given
   img = retImg;
   return img;
 }

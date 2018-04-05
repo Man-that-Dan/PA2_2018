@@ -20,7 +20,7 @@ void openInputFiles(string name, ifstream inPut[]){
       if(ext >= 10){
         fileName = string("average_") + string("0") + to_string(ext) + string(".ppm");
       };
-      cout << filename << endl;
+      cout << fileName << endl;
       cout << "made it all the way here4" << endl;
       inPut[i].open(fileName);
       cout << "made it all the way here5" << endl;

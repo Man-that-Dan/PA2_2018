@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <fstream>
 #include <sstream>
+#include <istream>
+#include <ostream>
 #include <string.h>
 #include <vector>
 #include "../image/Header.h"

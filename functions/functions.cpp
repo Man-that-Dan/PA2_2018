@@ -63,18 +63,18 @@ Image removeNoiseAverage(vector<Image> img){
     sum = 0;
   // Average Green values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].g();
+      val = img[i].pixels()[r].g();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     averagedPix[r].set_g(avg);
     sum = 0;
   // Average Blue values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].b();
+      val = img[i].pixels()[r].b();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     averagedPix[r].set_b(avg);
     sum = 0;
     //move on to next pixel
@@ -107,20 +107,20 @@ Image removeNoiseMedian(vector<Image> img){
 
   // Average Green values
     for(i = 0; i < 9; i++){
-      int val = img[i].pixels()[r].g();
+      val = img[i].pixels()[r].g();
       nums[i] = val;
     };
     sort(nums.begin(), nums.end());
-    int median = nums[4];
+    median = nums[4];
     medianPix[r].set_g(median);
 
   // Average Blue values
     for(i = 0; i < 9; i++){
-      int val = img[i].pixels()[r].b();
+      val = img[i].pixels()[r].b();
       nums[i] = val;
     };
     sort(nums.begin(), nums.end());
-    int median = nums[4];
+    median = nums[4];
     medianPix[r].set_b(median);
 
     //move on to next pixel

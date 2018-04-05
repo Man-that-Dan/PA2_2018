@@ -15,7 +15,7 @@
 using namespace std;
 
 
-void openInputFiles(string name, vector<ifstream> inPut);
+void openInputFiles(string name, ifstream inPut[]);
 Image removeNoiseAverage(vector<Image> img);
 Image removeNoiseMedian(vector<Image> img);
 

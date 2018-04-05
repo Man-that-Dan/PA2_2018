@@ -4,11 +4,11 @@ using namespace std;
 
 
 //opens input files and stores pointers in FILE pointer array given
-void openInputFiles(string name, vector<ifstream> inPut){
+void openInputFiles(string name, ifstream inPut[]){
   // open files named average###.ppm
   if(name == "average"){
     int i;
-    inPut.resize(10);
+
     istringstream filebuilder;
     string fileName;
     for(i = 0; i < 10; i++){
@@ -25,7 +25,7 @@ void openInputFiles(string name, vector<ifstream> inPut){
   // open files named median###.ppm
   if(name == "median"){
     int i;
-    inPut.resize(9);
+    
     istringstream filebuilder;
     string fileName;
     for(i = 0; i < 9; i++){

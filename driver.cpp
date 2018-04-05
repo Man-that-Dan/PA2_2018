@@ -52,18 +52,20 @@ int main(int argc, char const *argv[]) {
 
   int i;
   for(i = 0; i < 9; i++){
-    MedImgs[i] = Image temp(MedInput[i]);
+    Image temp(MedInput[i]);
+    MedImgs[i] = temp;
   };
 
   for(i = 0; i < 10; i++){
-    AvgImgs[i] = Image temp(AvgInput[i]);
+    Image temp(AvgInput[i]);
+    AvgImgs[i] = temp;
   };
 
   Image MedImg = removeNoiseMedian(MedImgs);
   Image AvgImg = removeNoiseMedian(AvgImgs);
 
-  ofstream Medout("Noise_rem_med.ppm")
-  ofstream Avgout("Noise_rem_avg.ppm")
+  ofstream Medout("Noise_rem_med.ppm");
+  ofstream Avgout("Noise_rem_avg.ppm");
 
   MedImg.write_to(Medout);
   AvgImg.write_to(Avgout);

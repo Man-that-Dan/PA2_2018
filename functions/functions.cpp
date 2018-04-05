@@ -5,6 +5,7 @@ using namespace std;
 
 //opens input files and stores pointers in FILE pointer array given
 void openInputFiles(string name, ifstream inPut[]){
+  cout << "made it all the way here3" << endl;
   // open files named average###.ppm
   if(name == "average"){
     int i;
@@ -19,7 +20,9 @@ void openInputFiles(string name, ifstream inPut[]){
       if(ext >= 10){
         fileName = string("average_") + string("0") + to_string(ext) + string(".ppm");
       };
+      cout << "made it all the way here4" << endl;
       inPut[i].open(fileName);
+      cout << "made it all the way here5" << endl;
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
         exit(0);
@@ -54,7 +57,7 @@ void openInputFiles(string name, ifstream inPut[]){
 //removes noise using average value of pixels
 Image removeNoiseAverage(vector<Image> img){
 
-
+  cout << "made it all the way here2" << endl;
   vector<Pixel> averagedPix;
   int val, avg;
   int sum = 0;
@@ -96,6 +99,7 @@ Image removeNoiseAverage(vector<Image> img){
 
 //opens values using median pixel values
 Image removeNoiseMedian(vector<Image> img){
+  cout << "made it all the way here1" << endl;
   vector<unsigned int> nums;
   nums.resize(9);
   vector<Pixel> medianPix;
@@ -137,6 +141,6 @@ Image removeNoiseMedian(vector<Image> img){
     r++;
   };
   Image newImg(img[0], medianPix);
-  cout << "made it all the way here" << endl;
+
   return newImg;
 };

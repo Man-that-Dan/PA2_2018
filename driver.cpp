@@ -57,7 +57,7 @@ int main(int argc, char const *argv[]) {
     Image temp(MedInput[i]);
     MedImgs[i] = temp;
   };
-
+  cout << "made it all the way here6" << endl;
   for(i = 0; i < 10; i++){
     Image temp(AvgInput[i]);
     AvgImgs[i] = temp;

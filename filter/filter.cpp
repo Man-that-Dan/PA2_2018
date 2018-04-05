@@ -142,6 +142,6 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   Image retImg(img, newPix);
   Image* retImgPtr = &retImg;
   cout << "no problem with loop" << endl;
-  // img = retImg;
-  return *retImgPtr;
+  img = retImg;
+  return img;
 }

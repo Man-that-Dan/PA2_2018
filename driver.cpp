@@ -63,7 +63,7 @@ int main(int argc, char const *argv[]) {
   };
 
   Image MedImg = removeNoiseMedian(MedImgs);
-  Image AvgImg = removeNoiseMedian(AvgImgs);
+  Image AvgImg = removeNoiseAverage(AvgImgs);
 
   ofstream Medout("Noise_rem_med.ppm");
   ofstream Avgout("Noise_rem_avg.ppm");

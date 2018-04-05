@@ -13,7 +13,7 @@ void openInputFiles(string name, ifstream inPut[]){
     string fileName;
     for(i = 0; i < 10; i++){
       int ext = i+1;
-      filebuilder << "median_" << setfill('0') << setw(3) << ext << ".ppm" << endl;
+      filebuilder << "median_" << setw(3) << setfill('0') << ext << ".ppm" << endl;
       fileName = filebuilder.str();
       inPut[i] = ifstream input(filename);
       if(!inPut[i]){

@@ -1,10 +1,10 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-#include <stdlib>
+#include <stdlib.h>
 #include <stdio>
 #include <fstream>
 #include <sstream>
-#include <string>
+#include <string.h>
 #include <vector>
 #include "../image/Header.h"
 #include "../image/Image.h"

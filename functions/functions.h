@@ -20,7 +20,8 @@ using namespace std;
 
 
 void openInputFiles(string name, ifstream inPut[]);
-Image removeNoiseAverage(vector<Image> img);
+// Image removeNoiseAverage(vector<Image> img);
+Image* removeNoiseAverage(Image* img[])
 Image removeNoiseMedian(vector<Image> img);
 
 

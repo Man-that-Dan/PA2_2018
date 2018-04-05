@@ -104,12 +104,13 @@ Image removeNoiseMedian(vector<Image> img){
   cout << "made it all the way here1" << endl;
   vector<unsigned int> nums;
   nums.resize(9);
+  cout << "made it all the way here16" << endl;
   vector<Pixel> medianPix;
   int i, val, median;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
   medianPix.resize(totalPixels);
-
+  cout << "made it all the way here17" << endl;
 
   while(r < totalPixels){
   // Average Red values
@@ -120,7 +121,7 @@ Image removeNoiseMedian(vector<Image> img){
     std::sort(nums.begin(), nums.end());
     median = nums[4];
     medianPix[r].set_r(median);
-
+  cout << "made it all the way here18" << endl;
   // Average Green values
     for(i = 0; i < 9; i++){
       val = img[i].pixels()[r].g();

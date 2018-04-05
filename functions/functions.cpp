@@ -57,7 +57,7 @@ void openInputFiles(string name, ifstream inPut[]){
 
 //removes noise using average value of pixels
 Image removeNoiseAverage(vector<Image> img){
-
+  cout << "made it all the way here8" << endl;
   cout << "made it all the way here2" << endl;
   vector<Pixel> averagedPix;
   int val, avg;
@@ -95,6 +95,7 @@ Image removeNoiseAverage(vector<Image> img){
     r++;
   };
   Image newImg(img[0], averagedPix);
+  cout << "made it all the way here9" << endl;
   return newImg;
 };
 
@@ -142,6 +143,6 @@ Image removeNoiseMedian(vector<Image> img){
     r++;
   };
   Image newImg(img[0], medianPix);
-
+  cout << "made it all the way here7" << endl;
   return newImg;
 };

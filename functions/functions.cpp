@@ -146,7 +146,7 @@ Image removeNoiseMedian(vector<Image> img){
     //move on to next pixel
     r++;
   };
-  for{r = 0; r < totalPixels; r++}{
+  for(r = 0; r < totalPixels; r++){
     medianPix[r] = VectorsAreSlow[r];
   };
   Image newImg(img[0], medianPix);

@@ -102,7 +102,7 @@ Image removeNoiseMedian(vector<Image> img){
       val = img[i].pixels()[r].r();
       nums[i] = val;
     };
-    sort(nums.begin(), nums.end());
+    std::sort(nums.begin(), nums.end());
     median = nums[4];
     medianPix[r].set_r(median);
 
@@ -111,7 +111,7 @@ Image removeNoiseMedian(vector<Image> img){
       val = img[i].pixels()[r].g();
       nums[i] = val;
     };
-    sort(nums.begin(), nums.end());
+    std::sort(nums.begin(), nums.end());
     median = nums[4];
     medianPix[r].set_g(median);
 
@@ -120,7 +120,7 @@ Image removeNoiseMedian(vector<Image> img){
       val = img[i].pixels()[r].b();
       nums[i] = val;
     };
-    sort(nums.begin(), nums.end());
+    std::sort(nums.begin(), nums.end());
     median = nums[4];
     medianPix[r].set_b(median);
 

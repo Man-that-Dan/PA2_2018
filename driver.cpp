@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
   };
 
   string in;
-  in = argv[1];
+  in = argv[2];
   string out1 = "k3_" + in;
   string out2 = "k5_" + in;
   // Open files

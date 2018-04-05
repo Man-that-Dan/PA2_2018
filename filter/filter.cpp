@@ -26,7 +26,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     sumR = 0;
     sumG = 0;
     sumB = 0;
-    cout << "running K3" << endl;
+  
     //looping through matrix and neighboring pixels
     //row
     for(filtY = 0, neighborY = -1; filtY < 3; filtY++, neighborY++){
@@ -35,8 +35,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         int currR = static_cast<int>(img((neighborX + x), (neighborY + y)).r());
         int currG = static_cast<int>(img((neighborX + x), (neighborY + y)).g());
         int currB = static_cast<int>(img((neighborX + x), (neighborY + y)).b());
-        cout << img((neighborX + x), (neighborY + y)).r() << endl;
-        cout<< currR << " " << currG << " " << currB << endl;
+
         sumR+=(currR * k[filtY][filtX]);
         sumG+=(currG * k[filtY][filtX]);
         sumB+=(currB * k[filtY][filtX]);
@@ -48,21 +47,17 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     int R = sumR1;
     int G = sumG1;
     int B = sumB1;
-    cout << R << " " << G << " " << B << endl;
-
 
     //create new pixel
     Pixel retValue(R, G, B);
-    Pixel K3marking(100, 0, 0);
-    if(x < 300){
-      return K3marking;
-    };
+
+
     return retValue;
   };
 
   //5x5 operation
   if(k == K5){
-    cout << "running K5" << endl;
+
     int neighborX, neighborY, sumR, sumG, sumB, filtX, filtY;
     sumR = 0;
     sumG = 0;
@@ -88,10 +83,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
     //create new pixel
     Pixel retValue(R, G, B);
-    Pixel K5marking(100, 0, 0);
-    if(x > 300){
-      return K5marking;
-    };
+
     return retValue;
   };
     return Pixel(0, 0, 0);
@@ -114,7 +106,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
 
   //3x3 operation
   if(k == K3){
-    cout << "running K3" << endl;
+
     //loop through all pixels except edge pixels
     for(y = 1; y < (height - 1); y++){
       for(x = 1; x < (width - 1); x++){
@@ -127,7 +119,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
 
   //5x5 operation
   if(k == K5){
-    cout << "running K5" << endl;
+
     //loop through all pixels except edge pixels
     for(y = 2; y < (height - 2); y++){
       for(x = 2; x < (width - 2); x++){
@@ -141,7 +133,6 @@ Image& Filter::sharpen(Image& img, Matrix& k){
 
   Image retImg(img, newPix);
   Image* retImgPtr = &retImg;
-  cout << "no problem with loop" << endl;
   img = retImg;
   return img;
 }

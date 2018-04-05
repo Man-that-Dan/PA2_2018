@@ -9,11 +9,11 @@ void openInputFiles(string name, ifstream inPut[]){
   if(name == "average"){
     int i;
 
-    stringstream filebuilder;
+    std::stringstream filebuilder;
     string fileName;
     for(i = 0; i < 10; i++){
       int ext = i+1;
-      filebuilder  << setfill('0') << setw(3) << ext <<;
+      filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "average_" + filebuilder.str() + ".ppm";
       inPut[i] = ifstream input(filename);
       if(!inPut[i]){
@@ -30,7 +30,7 @@ void openInputFiles(string name, ifstream inPut[]){
     string fileName;
     for(i = 0; i < 9; i++){
       int ext = i+1;
-      filebuilder  << setfill('0') << setw(3) << ext <<;
+      filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "median_" + filebuilder.str() + ".ppm";
       inPut[i] = ifstream input(filename);
       if(!inPut[i]){

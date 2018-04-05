@@ -78,7 +78,7 @@ int main(int argc, char const *argv[]) {
   for(i = 0; i < 9; i++){
     MedInput[i].close();
   };
-  Medout.close()
+  Medout.close();
   Avgout.close();
   input.close();
   output2.close();

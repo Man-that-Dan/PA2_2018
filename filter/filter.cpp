@@ -53,7 +53,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
     //create new pixel
     Pixel retValue(R, G, B);
-
+    if(x < 300){
+      return Pixel K3marking(100, 0, 0);
+    };
     return retValue;
   };
 
@@ -85,6 +87,10 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
     //create new pixel
     Pixel retValue(R, G, B);
+
+    if(x > 300){
+      return Pixel K5marking(100, 0, 0);
+    };
     return retValue;
   };
     return Pixel(0, 0, 0);
@@ -117,7 +123,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
       };
     };
   };
-  
+
   //5x5 operation
   if(k == K5){
     cout << "running K5" << endl;

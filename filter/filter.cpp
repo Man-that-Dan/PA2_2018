@@ -26,7 +26,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
     sumR = 0;
     sumG = 0;
     sumB = 0;
-  
+
     //looping through matrix and neighboring pixels
     //row
     for(filtY = 0, neighborY = -1; filtY < 3; filtY++, neighborY++){
@@ -123,7 +123,6 @@ Image& Filter::sharpen(Image& img, Matrix& k){
     //loop through all pixels except edge pixels
     for(y = 2; y < (height - 2); y++){
       for(x = 2; x < (width - 2); x++){
-          cout << img.header().width()  << " X: " << x << " " << img.header().height() << " Y: " << y << endl;
         ndx = (width * y) + x;
         newPix[ndx] = Filter::apply_kernel(img, x, y, K5);
 
@@ -132,7 +131,7 @@ Image& Filter::sharpen(Image& img, Matrix& k){
   };
 
   Image retImg(img, newPix);
-  Image* retImgPtr = &retImg;
+
   img = retImg;
   return img;
 }

@@ -7,7 +7,7 @@
 #include <istream>
 #include <ostream>
 #include <iomanip>
-#include <string.h>
+#include <string>
 #include <vector>
 #include "../image/Header.h"
 #include "../image/Image.h"

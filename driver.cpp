@@ -31,10 +31,10 @@ int main(int argc, char const *argv[]) {
 
   // ifstream constructor, let's read the file twice!
   Image pic(input);
-  Image outK5 = Filter::sharpen(pic, Filter::K5);
+  // Image outK5 = Filter::sharpen(pic, Filter::K5);
   Image outK3 = Filter::sharpen(pic, Filter::K3);
 
-  outK5.write_to(output2);
+  // outK5.write_to(output2);
   outK3.write_to(output);
 
 

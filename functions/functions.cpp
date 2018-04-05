@@ -9,7 +9,7 @@ void openInputFiles(string name, ifstream inPut[]){
   if(name == "average"){
     int i;
 
-    istringstream filebuilder;
+    stringstream filebuilder;
     string fileName;
     for(i = 0; i < 10; i++){
       int ext = i+1;

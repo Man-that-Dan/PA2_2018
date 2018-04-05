@@ -13,8 +13,8 @@ void openInputFiles(string name, ifstream inPut[]){
     string fileName;
     for(i = 0; i < 10; i++){
       int ext = i+1;
-      filebuilder << "median_" << setw(3) << setfill('0') << ext << ".ppm" << endl;
-      fileName = filebuilder.str();
+      filebuilder  << setfill('0') << setw(3) << ext <<;
+      fileName = "average_" + filebuilder.str() + ".ppm";
       inPut[i] = ifstream input(filename);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
@@ -30,8 +30,8 @@ void openInputFiles(string name, ifstream inPut[]){
     string fileName;
     for(i = 0; i < 9; i++){
       int ext = i+1;
-      filebuilder << "median_" << setfill('0') << setw(3) << ext << ".ppm" << endl;
-      fileName = filebuilder.str();
+      filebuilder  << setfill('0') << setw(3) << ext <<;
+      fileName = "median_" + filebuilder.str() + ".ppm";
       inPut[i] = ifstream input(filename);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;

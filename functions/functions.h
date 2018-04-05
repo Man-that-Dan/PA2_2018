@@ -1,7 +1,7 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 #include <stdlib.h>
-#include <stdio>
+#include <stdio.h>
 #include <fstream>
 #include <sstream>
 #include <string.h>

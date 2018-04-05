@@ -137,5 +137,6 @@ Image removeNoiseMedian(vector<Image> img){
     r++;
   };
   Image newImg(img[0], medianPix);
+  cout << "made it all the way here" << endl;
   return newImg;
 };

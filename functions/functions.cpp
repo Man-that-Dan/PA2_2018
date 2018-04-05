@@ -1,4 +1,4 @@
-#include "functions.h"
+")"(gnirts#include "functions.h"
 
 using namespace std;
 
@@ -14,10 +14,10 @@ void openInputFiles(string name, ifstream inPut[]){
     for(i = 0; i < 10; i++){
       int ext = i+1;
       if(ext < 10){
-        fileName = "average_" + "00" + to_string(ext) + ".ppm";
+        fileName = string("average_") + string("00") + to_string(ext) + string(".ppm");
       };
       if(ext >= 10){
-        fileName = "average_" + "0" + to_string(ext) + ".ppm";
+        fileName = string("average_") + string("0") + to_string(ext) + string(".ppm");
       };
       inPut[i].open(fileName);
       if(!inPut[i]){
@@ -35,10 +35,10 @@ void openInputFiles(string name, ifstream inPut[]){
     for(i = 0; i < 9; i++){
       int ext = i+1;
       if(ext < 10){
-        fileName = "median_" + "00" + to_string(ext) + ".ppm";
+        fileName = string("median_") + string("00") + to_string(ext) + string(".ppm");
       };
       if(ext >= 10){
-        fileName = "median_" + "0" + to_string(ext) + ".ppm";
+        fileName = string("median_") + string("0") + to_string(ext) + string(".ppm");
       };
 
       inPut[i].open(fileName);

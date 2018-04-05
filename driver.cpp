@@ -52,12 +52,12 @@ int main(int argc, char const *argv[]) {
 
   int i;
   for(i = 0; i < 9; i++){
-    Image temp(MedInput[i]);
+    Image temp(MedInput[i]&);
     MedImgs[i] = temp;
   };
 
   for(i = 0; i < 10; i++){
-    Image temp(AvgInput[i]);
+    Image temp(AvgInput[i]&);
     AvgImgs[i] = temp;
   };
 

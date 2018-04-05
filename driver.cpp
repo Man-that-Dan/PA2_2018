@@ -61,11 +61,11 @@ int main(int argc, char const *argv[]) {
   for(i = 0; i < 10; i++){
     AvgImgs.push_back(Image(AvgInput[i]));
   };
-  Image AvgImg = removeNoiseAverage(AvgImgs);
+
   cout << "made it all the way here10" << endl;
   Image MedImg = removeNoiseMedian(MedImgs);
   cout << "made it all the way here11" << endl;
-
+  Image AvgImg = removeNoiseAverage(AvgImgs);
   cout << "made it all the way here12" << endl;
   ofstream Medout("Noise_rem_med.ppm");
   cout << "made it all the way here13" << endl;

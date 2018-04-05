@@ -53,8 +53,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
     //create new pixel
     Pixel retValue(R, G, B);
+    Pixel K3marking(100, 0, 0);
     if(x < 300){
-      return Pixel K3marking(100, 0, 0);
+      return K3marking;
     };
     return retValue;
   };
@@ -87,9 +88,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
     //create new pixel
     Pixel retValue(R, G, B);
-
+    Pixel K5marking(100, 0, 0);
     if(x > 300){
-      return Pixel K5marking(100, 0, 0);
+      return K5marking;
     };
     return retValue;
   };

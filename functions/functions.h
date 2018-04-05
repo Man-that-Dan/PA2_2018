@@ -6,6 +6,7 @@
 #include <sstream>
 #include <istream>
 #include <ostream>
+#include <iomanip>
 #include <string.h>
 #include <vector>
 #include "../image/Header.h"

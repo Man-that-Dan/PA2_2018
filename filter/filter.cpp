@@ -42,12 +42,12 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(currB * k[filtY][filtX]);
       };
     };
-    sumR = Filter::clamp(0, 255, sumR);
-    sumG = Filter::clamp(0, 255, sumG);
-    sumB = Filter::clamp(0, 255, sumB);
-    int R = sumR;
-    int G = sumG;
-    int B = sumB;
+    int sumR1 = Filter::clamp(0, 255, sumR);
+    int sumG1 = Filter::clamp(0, 255, sumG);
+    int sumB1 = Filter::clamp(0, 255, sumB);
+    int R = sumR1;
+    int G = sumG1;
+    int B = sumB1;
     cout << R << " " << G << " " << B << endl;
 
 
@@ -84,7 +84,7 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
 
 
     //create new pixel
-    Pixel retValue(50, 50, 50);
+    Pixel retValue(100, 0, 0);
     return retValue;
   };
     return Pixel(0, 0, 0);

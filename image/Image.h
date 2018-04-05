@@ -18,7 +18,7 @@ class Image {
 
 
     // Disallow default constructor, why?
-    Image ();
+
 
     // Used by Constructors to build Image
 
@@ -34,6 +34,7 @@ class Image {
     Image (std::ifstream&);
     Image (const Image& i);
     Image(const Image& i, vector<Pixel> pix);
+    Image ();
 
     // Public member functions
     void write_to(std::ofstream&) const;

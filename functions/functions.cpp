@@ -15,7 +15,7 @@ void openInputFiles(string name, ifstream inPut[]){
       int ext = i+1;
       filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "average_" + filebuilder.str() + ".ppm";
-      inPut[i] = ifstream input(filename);
+      inPut[i].open(filename);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
         exit(0);
@@ -32,7 +32,7 @@ void openInputFiles(string name, ifstream inPut[]){
       int ext = i+1;
       filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "median_" + filebuilder.str() + ".ppm";
-      inPut[i] = ifstream input(filename);
+      inPut[i].open(filename);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
         exit(0);
@@ -47,6 +47,7 @@ Image removeNoiseAverage(vector<Image> img){
 
 
   vector<Pixel> averagedPix;
+  int val;
   int sum = 0;
   int i;
   int r = 0;
@@ -55,10 +56,10 @@ Image removeNoiseAverage(vector<Image> img){
   while(r < totalPixels){
   // Average Red values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].r();
+      val = img[i].pixels()[r].r();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     averagedPix[r].set_r(avg);
     sum = 0;
   // Average Green values
@@ -89,7 +90,7 @@ Image removeNoiseMedian(vector<Image> img){
   vector<unsigned int> nums;
   nums.resize(9);
   vector<Pixel> medianPix;
-  int i;
+  int i, val, median;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
   medianPix.resize(totalPixels);
@@ -98,11 +99,11 @@ Image removeNoiseMedian(vector<Image> img){
   while(r < totalPixels){
   // Average Red values
     for(i = 0; i < 9; i++){
-      int val = img[i].pixels()[r].r();
+      val = img[i].pixels()[r].r();
       nums[i] = val;
     };
     sort(nums.begin(), nums.end());
-    int median = nums[4];
+    median = nums[4];
     medianPix[r].set_r(median);
 
   // Average Green values

@@ -46,9 +46,9 @@ int main(int argc, char const *argv[]) {
   ifstream MedInput[9];
   ifstream AvgInput[10];
 
-  Image MedImgs[9];
-  Image* MedPtr = MedImgs;
-  vector<Image> AvgImgs;
+  Image AvgImgs[9];
+  Image* AvfPtr = AvgImgs;
+  // vector<Image> AvgImgs;
 
   openInputFiles("median", MedInput);
   openInputFiles("average", AvgInput);
@@ -56,25 +56,25 @@ int main(int argc, char const *argv[]) {
   int i;
   for(i = 0; i < 9; i++){
 
-    MedImgs[i] = Image(MedInput[i]);
+    AvgImgs[i] = Image(AvgInput[i]);
   };
   cout << "made it all the way here6" << endl;
-  for(i = 0; i < 10; i++){
-    AvgImgs.push_back(Image(AvgInput[i]));
-  };
+  // for(i = 0; i < 10; i++){
+  //   AvgImgs.push_back(Image(AvgInput[i]));
+  // };
 
   cout << "made it all the way here10" << endl;
-  Image MedImg = removeNoiseMedian(MedImgs);
+  // Image MedImg = removeNoiseMedian(MedImgs);
   cout << "made it all the way here11" << endl;
-  // Image AvgImg = removeNoiseAverage(AvgImgs);
+  Image* AvgImg = removeNoiseAverage(AvgImgs);
   cout << "made it all the way here12" << endl;
   ofstream Medout("Noise_rem_med.ppm");
   cout << "made it all the way here13" << endl;
   ofstream Avgout("Noise_rem_avg.ppm");
 
-  MedImg.write_to(Medout);
+  // MedImg.write_to(Medout);
   cout << "made it all the way here14" << endl;
-  // AvgImg.write_to(Avgout);
+  AvgImg->write_to(Avgout);
 
   //close files
 

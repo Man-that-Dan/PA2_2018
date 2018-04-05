@@ -110,6 +110,7 @@ Image removeNoiseMedian(vector<Image> img){
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
   medianPix.resize(totalPixels);
+  Pixel* VectorsAreSlow = new Pixel[totalPixels];
   cout << "made it all the way here17" << endl;
 
   while(r < totalPixels){
@@ -120,7 +121,7 @@ Image removeNoiseMedian(vector<Image> img){
     };
     std::sort(nums.begin(), nums.end());
     median = nums[4];
-    medianPix[r].set_r(median);
+    VectorsAreSlow[r].set_r(median);
   if(r == (totalPixels/2)){
     cout << "made it all the way here18 Progress:" << r << " out of: " << totalPixels << endl;
   };
@@ -131,7 +132,7 @@ Image removeNoiseMedian(vector<Image> img){
     };
     std::sort(nums.begin(), nums.end());
     median = nums[4];
-    medianPix[r].set_g(median);
+    VectorsAreSlow[r].set_g(median);
 
   // Average Blue values
     for(i = 0; i < 9; i++){
@@ -140,10 +141,13 @@ Image removeNoiseMedian(vector<Image> img){
     };
     std::sort(nums.begin(), nums.end());
     median = nums[4];
-    medianPix[r].set_b(median);
+    VectorsAreSlow[r].set_b(median);
 
     //move on to next pixel
     r++;
+  };
+  for{r = 0; r < totalPixels; r++}{
+    medianPix[r] = VectorsAreSlow[r];
   };
   Image newImg(img[0], medianPix);
   cout << "made it all the way here7" << endl;

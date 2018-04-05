@@ -121,7 +121,9 @@ Image removeNoiseMedian(vector<Image> img){
     std::sort(nums.begin(), nums.end());
     median = nums[4];
     medianPix[r].set_r(median);
-  cout << "made it all the way here18 Progress:" << r << " out of: " << totalPixels << endl;
+  if(r = (totalPixels/2)){
+    cout << "made it all the way here18 Progress:" << r << " out of: " << totalPixels << endl;
+  };
   // Average Green values
     for(i = 0; i < 9; i++){
       val = img[i].pixels()[r].g();

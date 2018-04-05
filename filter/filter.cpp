@@ -75,16 +75,16 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
-    sumR = Filter::clamp(0, 255, sumR);
-    sumG = Filter::clamp(0, 255, sumG);
-    sumB = Filter::clamp(0, 255, sumB);
-    uint8_t R = static_cast<uint8_t>(sumR);
-    uint8_t G = static_cast<uint8_t>(sumG);
-    uint8_t B = static_cast<uint8_t>(sumB);
+    sumR1 = Filter::clamp(0, 255, sumR);
+    sumG1 = Filter::clamp(0, 255, sumG);
+    sumB1 = Filter::clamp(0, 255, sumB);
+    int R = sumR1;
+    int G = sumG1;
+    int B = sumB1;
 
 
     //create new pixel
-    Pixel retValue(100, 0, 0);
+    Pixel retValue(R, G, B);
     return retValue;
   };
     return Pixel(0, 0, 0);

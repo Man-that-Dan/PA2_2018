@@ -75,9 +75,9 @@ Pixel Filter::apply_kernel(Image& img, int x, int y, Matrix& k){
         sumB+=(img((neighborX + x), (neighborY + y)).b() * k[filtY][filtX]);
       };
     };
-    sumR1 = Filter::clamp(0, 255, sumR);
-    sumG1 = Filter::clamp(0, 255, sumG);
-    sumB1 = Filter::clamp(0, 255, sumB);
+    int sumR1 = Filter::clamp(0, 255, sumR);
+    int sumG1 = Filter::clamp(0, 255, sumG);
+    int sumB1 = Filter::clamp(0, 255, sumB);
     int R = sumR1;
     int G = sumG1;
     int B = sumB1;

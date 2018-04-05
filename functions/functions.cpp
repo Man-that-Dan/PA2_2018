@@ -15,7 +15,7 @@ void openInputFiles(string name, ifstream inPut[]){
       int ext = i+1;
       filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "average_" + filebuilder.str() + ".ppm";
-      inPut[i].open(filename);
+      inPut[i].open(fileName);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
         exit(0);
@@ -32,7 +32,7 @@ void openInputFiles(string name, ifstream inPut[]){
       int ext = i+1;
       filebuilder  << std::setw(3) << std::setfill('0')  << ext;
       fileName = "median_" + filebuilder.str() + ".ppm";
-      inPut[i].open(filename);
+      inPut[i].open(fileName);
       if(!inPut[i]){
         cout << "Error: Could not open " << fileName << endl;
         exit(0);
@@ -47,7 +47,7 @@ Image removeNoiseAverage(vector<Image> img){
 
 
   vector<Pixel> averagedPix;
-  int val;
+  int val, avg;
   int sum = 0;
   int i;
   int r = 0;

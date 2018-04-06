@@ -47,7 +47,7 @@ int main(int argc, char const *argv[]) {
   ifstream AvgInput[10];
 
   Image AvgImgs[9];
-  Image** AvgPtr = AvgImgs;
+  Image** AvgPtr = &AvgImgs;
   // vector<Image> AvgImgs;
 
   openInputFiles("median", MedInput);

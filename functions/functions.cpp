@@ -159,82 +159,82 @@ void openInputFiles(string name, ifstream inPut[]){
 
 
 
-image_t* removeNoiseMedian(image_t* image[]){
-  image_t* newImg = (image_t*) malloc(sizeof(image_t));
-  newImg->header = image[0]->header;
-  unsigned int nums[9];
-  int i;
-  int r = 0;
-  int totalPixels = (image[0]->header.HEIGHT)*(image[0]->header.WIDTH);
-  newImg->pixels = (pixel_t*) malloc(sizeof(pixel_t) * totalPixels);
-
-  while(r < totalPixels){
-  // Average Red values
-    for(i = 0; i < 9; i++){
-      int val = image[i]->pixels[r].R;
-      nums[i] = val;
-    };
-    sort(nums, 9);
-    int median = nums[4];
-    newImg->pixels[r].R = median;
-
-  // Average Green values
-    for(i = 0; i < 9; i++){
-      int val = image[i]->pixels[r].G;
-      nums[i] = val;
-    };
-    sort(nums, 9);
-    median = nums[4];
-    newImg->pixels[r].G = median;
-
-  // Average Blue values
-    for(i = 0; i < 9; i++){
-      int val = image[i]->pixels[r].B;
-      nums[i] = val;
-    };
-    sort(nums, 9);
-    median = nums[4];
-    newImg->pixels[r].B = median;
-
-    //move on to next pixel
-    r++;
-  };
-
-  return newImg;
-};
+// image_t* removeNoiseMedian(image_t* image[]){
+//   image_t* newImg = (image_t*) malloc(sizeof(image_t));
+//   newImg->header = image[0]->header;
+//   unsigned int nums[9];
+//   int i;
+//   int r = 0;
+//   int totalPixels = (image[0]->header.HEIGHT)*(image[0]->header.WIDTH);
+//   newImg->pixels = (pixel_t*) malloc(sizeof(pixel_t) * totalPixels);
+//
+//   while(r < totalPixels){
+//   // Average Red values
+//     for(i = 0; i < 9; i++){
+//       int val = image[i]->pixels[r].R;
+//       nums[i] = val;
+//     };
+//     sort(nums, 9);
+//     int median = nums[4];
+//     newImg->pixels[r].R = median;
+//
+//   // Average Green values
+//     for(i = 0; i < 9; i++){
+//       int val = image[i]->pixels[r].G;
+//       nums[i] = val;
+//     };
+//     sort(nums, 9);
+//     median = nums[4];
+//     newImg->pixels[r].G = median;
+//
+//   // Average Blue values
+//     for(i = 0; i < 9; i++){
+//       int val = image[i]->pixels[r].B;
+//       nums[i] = val;
+//     };
+//     sort(nums, 9);
+//     median = nums[4];
+//     newImg->pixels[r].B = median;
+//
+//     //move on to next pixel
+//     r++;
+//   };
+//
+//   return newImg;
+// };
 
 Image* removeNoiseAverage(Image* img){
 
-
+  int val, avg;
   int sum = 0;
   int i;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
 
-  Pixel* Pixptr = new Pixel[];
+  Pixel* Pixptr = new Pixel[totalPixels];
   while(r < totalPixels){
   // Average Red values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].r();
+      val = img[i].pixels()[r].r();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     Pixptr[r].set_r(avg);
     sum = 0;
   // Average Green values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].g();
+      val = img[i].pixels()[r].g();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     Pixptr[r].set_g(avg);
     sum = 0;
   // Average Blue values
     for(i = 0; i < 10; i++){
-      int val = img[i].pixels()[r].b();
+      val = img[i].pixels()[r].b();
       sum += val;
     };
-    int avg = sum/10;
+    avg = sum/10;
     Pixptr[r].set_b(avg);
     sum = 0;
     //move on to next pixel
@@ -243,8 +243,8 @@ Image* removeNoiseAverage(Image* img){
   cout << "made it all the way here7done" << endl;
   vector<Pixel> slow;
   for(r = 0; r < totalPixels; r++){
-      VectorsAreSlow.push_back(Pixptr[r]);
+      slow.push_back(Pixptr[r]);
     };
-  Image* newImg = new Image(img[0], VectorsAreSlow);
+  Image* newImg = new Image(img[0], slow);
   return newImg;
 };

@@ -211,7 +211,7 @@ Image* removeNoiseAverage(Image* img){
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
 
-  Pixel* Pixptr = new Pixel[totalPixels];
+  Pixel* Pixptr = Pixel[300000];
   while(r < totalPixels){
   // Average Red values
     for(i = 0; i < 10; i++){

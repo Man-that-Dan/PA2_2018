@@ -8,6 +8,7 @@ using namespace std;
 Image::Image(ifstream& in) : HDR(Image::read_header(in)), PIX(Image::read_pixels(this->HDR, in)) { }
 Image::Image(const Image& i, vector<Pixel> pix) : HDR(i.HDR), PIX(pix) { }
 
+Image::Image() : HDR(Header::Header()), PIX(Pixel::Pixel()) { }
 // Copy constructor
 
 Image::Image(const Image& img) : HDR(img.HDR),  PIX(img.PIX) { }

@@ -247,6 +247,6 @@ Image* removeNoiseAverage(Image* img){
     };
   Image* newImg = new Image[1];
   Image temp(img[0], slow);
-  newImg = temp
+  newImg = &temp;
   return newImg;
 };

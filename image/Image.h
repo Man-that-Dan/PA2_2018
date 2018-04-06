@@ -1,3 +1,11 @@
+/*
+  Daniel Toro
+  Project 2
+  CPSC 1020
+  MWF 11:15
+
+*/
+
 #ifndef IMAGE_H
 #define IMAGE_H 1
 
@@ -18,7 +26,7 @@ class Image {
 
 
     // Disallow default constructor, why?
-
+    Image ();
 
     // Used by Constructors to build Image
 
@@ -34,7 +42,7 @@ class Image {
     Image (std::ifstream&);
     Image (const Image& i);
     Image(const Image& i, vector<Pixel> pix);
-    Image ();
+
     vector<Pixel> createjunk();
     // Public member functions
     void write_to(std::ofstream&) const;

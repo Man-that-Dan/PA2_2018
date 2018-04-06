@@ -1,3 +1,11 @@
+/*
+  Daniel Toro
+  Project 2
+  CPSC 1020
+  MWF 11:15
+
+*/
+
 #include "Image.h"
 #include <vector>
 
@@ -6,14 +14,10 @@ using namespace std;
 // Param constructor
 
 Image::Image(ifstream& in) : HDR(Image::read_header(in)), PIX(Image::read_pixels(this->HDR, in)) { }
+
+//constructor used when you need to replace pixels in an object after an operation
 Image::Image(const Image& i, vector<Pixel> pix) : HDR(i.HDR), PIX(pix) { }
-vector<Pixel> Image::createjunk(){
-  vector<Pixel> junk;
-  junk.resize(1);
-  junk[0] = Pixel();
-  return junk;
-};
-Image::Image() : HDR(Header()), PIX(Image::createjunk()) { }
+
 // Copy constructor
 
 Image::Image(const Image& img) : HDR(img.HDR),  PIX(img.PIX) { }

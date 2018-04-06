@@ -1,3 +1,11 @@
+/*
+  Daniel Toro
+  Project 2
+  CPSC 1020
+  MWF 11:15
+
+*/
+
 #ifndef FILTER_H
 #define FILTER_H
 #include "../image/Header.h"

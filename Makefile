@@ -35,4 +35,4 @@ clean:
 	rm -rf $(OBJDIR)
 
 run:
-	./$(TARGET) puppy.ppm sharpened_pupper.ppm
+	./$(TARGET) doggo.ppm sharpened_pupper.ppm

@@ -35,7 +35,7 @@ class Image {
     Image (const Image& i);
     Image(const Image& i, vector<Pixel> pix);
     Image ();
-
+    vector<Pixel> createjunk();
     // Public member functions
     void write_to(std::ofstream&) const;
     void make_p3();

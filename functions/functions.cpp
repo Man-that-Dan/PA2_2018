@@ -203,7 +203,7 @@ image_t* removeNoiseMedian(image_t* image[]){
   return newImg;
 };
 
-Image* removeNoiseAverage(Image* img[]){
+Image* removeNoiseAverage(Image* img){
 
 
   int sum = 0;

@@ -249,8 +249,9 @@ Image* removeNoiseAverage(Image* img){
       slow.push_back(Pixel(Pixptr[r][0], Pixptr[r][1], Pixptr[r][2]));
     };
   delete Pixptr;
-  Image* newImg = new Image[1];
+
+
   Image temp(img[0], slow);
-  newImg = &temp;
+  Image* newImg = &temp;
   return newImg;
 };

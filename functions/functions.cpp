@@ -210,10 +210,12 @@ Image* removeNoiseAverage(Image* img){
   int i;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
-  // Pixel Pixarr[300000];
-  // Pixel* Pixptr = Pixarr;
-  Pixel* Pixptr = (Pixel*) malloc(sizeof(Pixel) * totalPixels);
+  Pixel* Pixptr = new Pixel[(totalPixels/3)];
+  Pixel* Pixptr2 = new Pixel[(totalPixels/3)];
+  Pixel* Pixptr3 = new Pixel[(totalPixels/3)];
+  int partition = totalPixels/3;
   while(r < totalPixels){
+  if(r < partition){
   // Average Red values
     for(i = 0; i < 10; i++){
       val = img[i].pixels()[r].r();
@@ -239,13 +241,79 @@ Image* removeNoiseAverage(Image* img){
     Pixptr[r].set_b(avg);
     sum = 0;
     //move on to next pixel
+
+  };
+  if(r > partition && r < partition*2){
+  // Average Red values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].r();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr2[r-partition].set_r(avg);
+    sum = 0;
+  // Average Green values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].g();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr2[r-partition].set_g(avg);
+    sum = 0;
+  // Average Blue values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].b();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr2[r-partition].set_b(avg);
+    sum = 0;
+    //move on to next pixel
+
+  };
+  if(r > partition*2){
+  // Average Red values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].r();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr3[r-partition].set_r(avg);
+    sum = 0;
+  // Average Green values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].g();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr3[r-partition].set_g(avg);
+    sum = 0;
+  // Average Blue values
+    for(i = 0; i < 10; i++){
+      val = img[i].pixels()[r].b();
+      sum += val;
+    };
+    avg = sum/10;
+    Pixptr3[r-partition].set_b(avg);
+    sum = 0;
+    //move on to next pixel
+
+  };
     r++;
   };
   cout << "made it all the way here7done" << endl;
   vector<Pixel> slow;
   for(r = 0; r < totalPixels; r++){
+    if(r < partition){
       slow.push_back(Pixptr[r]);
     };
+    if(r > partition && r < partition*2){
+      slow.push_back(Pixptr2[r-partition]);
+    };
+    if(r > partition*2){
+      slow.push_back(Pixptr3[r-partition]);
+    };
+  };
   Image* newImg = new Image[1];
   Image temp(img[0], slow);
   newImg = &temp;

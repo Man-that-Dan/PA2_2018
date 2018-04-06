@@ -46,8 +46,8 @@ int main(int argc, char const *argv[]) {
   ifstream MedInput[9];
   ifstream AvgInput[10];
 
-  Image AvgImgs[9];
-  Image** AvgPtr = AvgImgs;
+  Image** AvgPtr[9];
+  // Image** AvgPtr = AvgImgs;
   // vector<Image> AvgImgs;
 
   openInputFiles("median", MedInput);
@@ -55,8 +55,8 @@ int main(int argc, char const *argv[]) {
 
   int i;
   for(i = 0; i < 9; i++){
-
-    AvgPtr[i] = Image(AvgInput[i]);
+    temp = Image(AvgInput[i]);
+    AvgPtr[i] = &temp;
   };
   cout << "made it all the way here6" << endl;
   // for(i = 0; i < 10; i++){

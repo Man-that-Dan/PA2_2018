@@ -12,7 +12,7 @@
 #include "image/Header.h"
 #include "image/Image.h"
 #include "filter/filter.h"
-#include "functions/functions.h"
+
 
 using namespace std;
 

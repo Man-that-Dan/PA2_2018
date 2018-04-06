@@ -210,19 +210,18 @@ Image* removeNoiseAverage(Image* img){
   int i;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
-  Pixel* Pixptr = new Pixel[(totalPixels/3)];
-  Pixel* Pixptr2 = new Pixel[(totalPixels/3)];
-  Pixel* Pixptr3 = new Pixel[(totalPixels/3)];
-  int partition = totalPixels/3;
+  int* Pixptr = new int[totalPixels]
+  for(i = 0; i < totalPixels; i++){
+    Pixptr[i] = int[3];
+  };
   while(r < totalPixels){
-  if(r < partition){
   // Average Red values
     for(i = 0; i < 10; i++){
       val = img[i].pixels()[r].r();
       sum += val;
     };
     avg = sum/10;
-    Pixptr[r].set_r(avg);
+    Pixptr[r][0] = avg;
     sum = 0;
   // Average Green values
     for(i = 0; i < 10; i++){
@@ -230,7 +229,7 @@ Image* removeNoiseAverage(Image* img){
       sum += val;
     };
     avg = sum/10;
-    Pixptr[r].set_g(avg);
+    Pixptr[r][1] = avg;;
     sum = 0;
   // Average Blue values
     for(i = 0; i < 10; i++){
@@ -238,82 +237,17 @@ Image* removeNoiseAverage(Image* img){
       sum += val;
     };
     avg = sum/10;
-    Pixptr[r].set_b(avg);
+    Pixptr[r][2] = avg;
     sum = 0;
     //move on to next pixel
-
-  };
-  if(r > partition && r < partition*2){
-  // Average Red values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].r();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr2[r-partition].set_r(avg);
-    sum = 0;
-  // Average Green values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].g();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr2[r-partition].set_g(avg);
-    sum = 0;
-  // Average Blue values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].b();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr2[r-partition].set_b(avg);
-    sum = 0;
-    //move on to next pixel
-
-  };
-  if(r > partition*2){
-  // Average Red values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].r();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr3[r-partition].set_r(avg);
-    sum = 0;
-  // Average Green values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].g();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr3[r-partition].set_g(avg);
-    sum = 0;
-  // Average Blue values
-    for(i = 0; i < 10; i++){
-      val = img[i].pixels()[r].b();
-      sum += val;
-    };
-    avg = sum/10;
-    Pixptr3[r-partition].set_b(avg);
-    sum = 0;
-    //move on to next pixel
-
-  };
     r++;
   };
   cout << "made it all the way here7done" << endl;
   vector<Pixel> slow;
   for(r = 0; r < totalPixels; r++){
-    if(r < partition){
-      slow.push_back(Pixptr[r]);
+      slow.push_back(Pixel(Pixptr[r][0], Pixptr[r][1], Pixptr[r][2]));
     };
-    if(r > partition && r < partition*2){
-      slow.push_back(Pixptr2[r-partition]);
-    };
-    if(r > partition*2){
-      slow.push_back(Pixptr3[r-partition]);
-    };
-  };
+  delete Pixptr;
   Image* newImg = new Image[1];
   Image temp(img[0], slow);
   newImg = &temp;

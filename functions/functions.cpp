@@ -210,7 +210,7 @@ Image* removeNoiseAverage(Image* img){
   int i;
   int r = 0;
   int totalPixels = (img[0].header().height())*(img[0].header().width());
-  int* pixes[280000];
+  int pixes[280000];
   int** Pixptr = &pixes;
   for(i = 0; i < totalPixels; i++){
     int rgb[3];
